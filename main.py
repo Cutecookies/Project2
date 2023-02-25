@@ -370,6 +370,7 @@ if __name__ == '__main__':  # запуск программы
     blocks = []
     block = Blocks(screen)
     controls = Control(screen)
+    fire = Firework(screen)
 
     rules_text = ["Правила:", "",                  # текст правил
                   "1. Для начала игры необходимо",
@@ -435,6 +436,7 @@ if __name__ == '__main__':  # запуск программы
                         menu = False
                     elif end:                                    # проверка нажатия на "MENU"
                         menu = True
+                        fire = Firework(screen)
                         ending.menu = pygame.image.load('data/menu.png')
                         end = False
                         start = False
@@ -452,6 +454,7 @@ if __name__ == '__main__':  # запуск программы
                         menu = False
                     elif end:                                  # проверка нажатия на "REPLAY"
                         end = False
+                        fire = Firework(screen)
                         ending.replay = pygame.image.load('data/replay.png')
                         level.change_level(1)
                         block.change_level(1)
@@ -596,10 +599,8 @@ if __name__ == '__main__':  # запуск программы
             screen.fill((0, 0, 0))
             if life.life == 0:
                 text = 'ПРОИГРЫШ! :('
-                fire = Firework(screen)
                 fire.draw(0)
             else:
-                fire = Firework(screen)
                 fire.draw(1)
                 text = 'ПОБЕДА! :)'
             fire.move()
